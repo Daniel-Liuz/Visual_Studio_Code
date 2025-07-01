@@ -75,9 +75,9 @@
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(26, 31);
+            this.lblInfo.Location = new System.Drawing.Point(23, 26);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(98, 18);
+            this.lblInfo.Size = new System.Drawing.Size(87, 15);
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "HelloWorld";
             this.lblInfo.Click += new System.EventHandler(this.label1_Click);
@@ -85,9 +85,10 @@
             // btnInfo
             // 
             this.btnInfo.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInfo.Location = new System.Drawing.Point(677, 31);
+            this.btnInfo.Location = new System.Drawing.Point(602, 26);
+            this.btnInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(101, 44);
+            this.btnInfo.Size = new System.Drawing.Size(90, 37);
             this.btnInfo.TabIndex = 1;
             this.btnInfo.Text = "关于";
             this.btnInfo.UseVisualStyleBackColor = true;
@@ -97,9 +98,10 @@
             // 
             this.txtNum1.BackColor = System.Drawing.SystemColors.Info;
             this.txtNum1.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNum1.Location = new System.Drawing.Point(25, 94);
+            this.txtNum1.Location = new System.Drawing.Point(22, 78);
+            this.txtNum1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNum1.Name = "txtNum1";
-            this.txtNum1.Size = new System.Drawing.Size(100, 37);
+            this.txtNum1.Size = new System.Drawing.Size(89, 32);
             this.txtNum1.TabIndex = 2;
             this.txtNum1.TextChanged += new System.EventHandler(this.txtNum1_TextChanged);
             // 
@@ -107,9 +109,10 @@
             // 
             this.txtNum2.BackColor = System.Drawing.SystemColors.Info;
             this.txtNum2.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNum2.Location = new System.Drawing.Point(205, 94);
+            this.txtNum2.Location = new System.Drawing.Point(182, 78);
+            this.txtNum2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNum2.Name = "txtNum2";
-            this.txtNum2.Size = new System.Drawing.Size(100, 37);
+            this.txtNum2.Size = new System.Drawing.Size(89, 32);
             this.txtNum2.TabIndex = 3;
             this.txtNum2.TextChanged += new System.EventHandler(this.txtNum2_TextChanged);
             // 
@@ -117,18 +120,20 @@
             // 
             this.txtNum3.BackColor = System.Drawing.SystemColors.Info;
             this.txtNum3.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNum3.Location = new System.Drawing.Point(380, 97);
+            this.txtNum3.Location = new System.Drawing.Point(338, 81);
+            this.txtNum3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNum3.Name = "txtNum3";
-            this.txtNum3.Size = new System.Drawing.Size(100, 37);
+            this.txtNum3.Size = new System.Drawing.Size(89, 32);
             this.txtNum3.TabIndex = 4;
             this.txtNum3.TextChanged += new System.EventHandler(this.txtNum3_TextChanged);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(673, 97);
+            this.button2.Location = new System.Drawing.Point(598, 81);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 44);
+            this.button2.Size = new System.Drawing.Size(90, 37);
             this.button2.TabIndex = 5;
             this.button2.Text = "极值";
             this.button2.UseVisualStyleBackColor = true;
@@ -137,9 +142,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(523, 104);
+            this.checkBox1.Location = new System.Drawing.Point(465, 87);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(115, 22);
+            this.checkBox1.Size = new System.Drawing.Size(101, 19);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -152,9 +158,11 @@
             this.groupBox1.Controls.Add(this.radD);
             this.groupBox1.Controls.Add(this.radC);
             this.groupBox1.Controls.Add(this.radB);
-            this.groupBox1.Location = new System.Drawing.Point(29, 165);
+            this.groupBox1.Location = new System.Drawing.Point(26, 138);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(461, 258);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(410, 215);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "做题区1";
@@ -162,9 +170,10 @@
             // radA
             // 
             this.radA.AutoSize = true;
-            this.radA.Location = new System.Drawing.Point(6, 85);
+            this.radA.Location = new System.Drawing.Point(5, 71);
+            this.radA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radA.Name = "radA";
-            this.radA.Size = new System.Drawing.Size(69, 22);
+            this.radA.Size = new System.Drawing.Size(58, 19);
             this.radA.TabIndex = 12;
             this.radA.TabStop = true;
             this.radA.Text = "北京";
@@ -175,9 +184,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Location = new System.Drawing.Point(5, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 31);
+            this.label1.Size = new System.Drawing.Size(192, 27);
             this.label1.TabIndex = 11;
             this.label1.Text = "请问中国的首都是？";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
@@ -185,9 +194,10 @@
             // radD
             // 
             this.radD.AutoSize = true;
-            this.radD.Location = new System.Drawing.Point(6, 220);
+            this.radD.Location = new System.Drawing.Point(5, 183);
+            this.radD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radD.Name = "radD";
-            this.radD.Size = new System.Drawing.Size(69, 22);
+            this.radD.Size = new System.Drawing.Size(58, 19);
             this.radD.TabIndex = 10;
             this.radD.TabStop = true;
             this.radD.Text = "重庆";
@@ -197,9 +207,10 @@
             // radC
             // 
             this.radC.AutoSize = true;
-            this.radC.Location = new System.Drawing.Point(6, 177);
+            this.radC.Location = new System.Drawing.Point(5, 148);
+            this.radC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radC.Name = "radC";
-            this.radC.Size = new System.Drawing.Size(69, 22);
+            this.radC.Size = new System.Drawing.Size(58, 19);
             this.radC.TabIndex = 9;
             this.radC.TabStop = true;
             this.radC.Text = "天津";
@@ -209,9 +220,10 @@
             // radB
             // 
             this.radB.AutoSize = true;
-            this.radB.Location = new System.Drawing.Point(6, 130);
+            this.radB.Location = new System.Drawing.Point(5, 108);
+            this.radB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radB.Name = "radB";
-            this.radB.Size = new System.Drawing.Size(69, 22);
+            this.radB.Size = new System.Drawing.Size(58, 19);
             this.radB.TabIndex = 8;
             this.radB.TabStop = true;
             this.radB.Text = "上海";
@@ -225,9 +237,11 @@
             this.groupBox2.Controls.Add(this.radQ2D);
             this.groupBox2.Controls.Add(this.radQ2C);
             this.groupBox2.Controls.Add(this.radQ2B);
-            this.groupBox2.Location = new System.Drawing.Point(644, 165);
+            this.groupBox2.Location = new System.Drawing.Point(26, 396);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(461, 258);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(410, 215);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "做题区2";
@@ -235,9 +249,10 @@
             // radQ2A
             // 
             this.radQ2A.AutoSize = true;
-            this.radQ2A.Location = new System.Drawing.Point(6, 85);
+            this.radQ2A.Location = new System.Drawing.Point(5, 71);
+            this.radQ2A.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ2A.Name = "radQ2A";
-            this.radQ2A.Size = new System.Drawing.Size(87, 22);
+            this.radQ2A.Size = new System.Drawing.Size(73, 19);
             this.radQ2A.TabIndex = 12;
             this.radQ2A.TabStop = true;
             this.radQ2A.Text = "曹雪芹";
@@ -248,18 +263,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(6, 35);
+            this.label2.Location = new System.Drawing.Point(5, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(278, 31);
+            this.label2.Size = new System.Drawing.Size(232, 27);
             this.label2.TabIndex = 11;
             this.label2.Text = "谁是《红楼梦》的作者？";
             // 
             // radQ2D
             // 
             this.radQ2D.AutoSize = true;
-            this.radQ2D.Location = new System.Drawing.Point(6, 220);
+            this.radQ2D.Location = new System.Drawing.Point(5, 183);
+            this.radQ2D.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ2D.Name = "radQ2D";
-            this.radQ2D.Size = new System.Drawing.Size(87, 22);
+            this.radQ2D.Size = new System.Drawing.Size(73, 19);
             this.radQ2D.TabIndex = 10;
             this.radQ2D.TabStop = true;
             this.radQ2D.Text = "施耐庵";
@@ -269,9 +285,10 @@
             // radQ2C
             // 
             this.radQ2C.AutoSize = true;
-            this.radQ2C.Location = new System.Drawing.Point(6, 177);
+            this.radQ2C.Location = new System.Drawing.Point(5, 148);
+            this.radQ2C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ2C.Name = "radQ2C";
-            this.radQ2C.Size = new System.Drawing.Size(87, 22);
+            this.radQ2C.Size = new System.Drawing.Size(73, 19);
             this.radQ2C.TabIndex = 9;
             this.radQ2C.TabStop = true;
             this.radQ2C.Text = "罗贯中";
@@ -281,9 +298,10 @@
             // radQ2B
             // 
             this.radQ2B.AutoSize = true;
-            this.radQ2B.Location = new System.Drawing.Point(6, 130);
+            this.radQ2B.Location = new System.Drawing.Point(5, 108);
+            this.radQ2B.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ2B.Name = "radQ2B";
-            this.radQ2B.Size = new System.Drawing.Size(87, 22);
+            this.radQ2B.Size = new System.Drawing.Size(73, 19);
             this.radQ2B.TabIndex = 8;
             this.radQ2B.TabStop = true;
             this.radQ2B.Text = "吴承恩";
@@ -297,9 +315,11 @@
             this.groupBox3.Controls.Add(this.radQ3D);
             this.groupBox3.Controls.Add(this.radQ3C);
             this.groupBox3.Controls.Add(this.radQ3B);
-            this.groupBox3.Location = new System.Drawing.Point(41, 517);
+            this.groupBox3.Location = new System.Drawing.Point(22, 670);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(461, 258);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(410, 215);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "做题区3";
@@ -307,9 +327,10 @@
             // radQ3A
             // 
             this.radQ3A.AutoSize = true;
-            this.radQ3A.Location = new System.Drawing.Point(6, 85);
+            this.radQ3A.Location = new System.Drawing.Point(5, 71);
+            this.radQ3A.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ3A.Name = "radQ3A";
-            this.radQ3A.Size = new System.Drawing.Size(105, 22);
+            this.radQ3A.Size = new System.Drawing.Size(88, 19);
             this.radQ3A.TabIndex = 12;
             this.radQ3A.TabStop = true;
             this.radQ3A.Text = "菩提祖师";
@@ -320,18 +341,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(6, 35);
+            this.label3.Location = new System.Drawing.Point(5, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(374, 31);
+            this.label3.Size = new System.Drawing.Size(312, 27);
             this.label3.TabIndex = 11;
             this.label3.Text = "《西游记》中孙悟空的师傅是谁？";
             // 
             // radQ3D
             // 
             this.radQ3D.AutoSize = true;
-            this.radQ3D.Location = new System.Drawing.Point(6, 220);
+            this.radQ3D.Location = new System.Drawing.Point(5, 183);
+            this.radQ3D.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ3D.Name = "radQ3D";
-            this.radQ3D.Size = new System.Drawing.Size(105, 22);
+            this.radQ3D.Size = new System.Drawing.Size(88, 19);
             this.radQ3D.TabIndex = 10;
             this.radQ3D.TabStop = true;
             this.radQ3D.Text = "如来佛祖";
@@ -341,9 +363,10 @@
             // radQ3C
             // 
             this.radQ3C.AutoSize = true;
-            this.radQ3C.Location = new System.Drawing.Point(6, 177);
+            this.radQ3C.Location = new System.Drawing.Point(5, 148);
+            this.radQ3C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ3C.Name = "radQ3C";
-            this.radQ3C.Size = new System.Drawing.Size(105, 22);
+            this.radQ3C.Size = new System.Drawing.Size(88, 19);
             this.radQ3C.TabIndex = 9;
             this.radQ3C.TabStop = true;
             this.radQ3C.Text = "太上老君";
@@ -353,9 +376,10 @@
             // radQ3B
             // 
             this.radQ3B.AutoSize = true;
-            this.radQ3B.Location = new System.Drawing.Point(6, 130);
+            this.radQ3B.Location = new System.Drawing.Point(5, 108);
+            this.radQ3B.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ3B.Name = "radQ3B";
-            this.radQ3B.Size = new System.Drawing.Size(69, 22);
+            this.radQ3B.Size = new System.Drawing.Size(58, 19);
             this.radQ3B.TabIndex = 8;
             this.radQ3B.TabStop = true;
             this.radQ3B.Text = "唐僧";
@@ -369,9 +393,11 @@
             this.groupBox4.Controls.Add(this.radQ4D);
             this.groupBox4.Controls.Add(this.radQ4C);
             this.groupBox4.Controls.Add(this.radQ4B);
-            this.groupBox4.Location = new System.Drawing.Point(644, 517);
+            this.groupBox4.Location = new System.Drawing.Point(22, 925);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(461, 258);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(410, 215);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "做题区4";
@@ -380,9 +406,10 @@
             // radQ4A
             // 
             this.radQ4A.AutoSize = true;
-            this.radQ4A.Location = new System.Drawing.Point(6, 85);
+            this.radQ4A.Location = new System.Drawing.Point(5, 71);
+            this.radQ4A.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ4A.Name = "radQ4A";
-            this.radQ4A.Size = new System.Drawing.Size(105, 22);
+            this.radQ4A.Size = new System.Drawing.Size(88, 19);
             this.radQ4A.TabIndex = 12;
             this.radQ4A.TabStop = true;
             this.radQ4A.Text = "《呐喊》";
@@ -393,18 +420,19 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(6, 35);
+            this.label4.Location = new System.Drawing.Point(5, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(278, 31);
+            this.label4.Size = new System.Drawing.Size(232, 27);
             this.label4.TabIndex = 11;
             this.label4.Text = "以下哪部作品是鲁迅的？";
             // 
             // radQ4D
             // 
             this.radQ4D.AutoSize = true;
-            this.radQ4D.Location = new System.Drawing.Point(6, 220);
+            this.radQ4D.Location = new System.Drawing.Point(5, 183);
+            this.radQ4D.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ4D.Name = "radQ4D";
-            this.radQ4D.Size = new System.Drawing.Size(141, 22);
+            this.radQ4D.Size = new System.Drawing.Size(118, 19);
             this.radQ4D.TabIndex = 10;
             this.radQ4D.TabStop = true;
             this.radQ4D.Text = "《骆驼祥子》";
@@ -414,9 +442,10 @@
             // radQ4C
             // 
             this.radQ4C.AutoSize = true;
-            this.radQ4C.Location = new System.Drawing.Point(6, 177);
+            this.radQ4C.Location = new System.Drawing.Point(5, 148);
+            this.radQ4C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ4C.Name = "radQ4C";
-            this.radQ4C.Size = new System.Drawing.Size(105, 22);
+            this.radQ4C.Size = new System.Drawing.Size(88, 19);
             this.radQ4C.TabIndex = 9;
             this.radQ4C.TabStop = true;
             this.radQ4C.Text = "《茶馆》";
@@ -426,9 +455,10 @@
             // radQ4B
             // 
             this.radQ4B.AutoSize = true;
-            this.radQ4B.Location = new System.Drawing.Point(6, 130);
+            this.radQ4B.Location = new System.Drawing.Point(5, 108);
+            this.radQ4B.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ4B.Name = "radQ4B";
-            this.radQ4B.Size = new System.Drawing.Size(105, 22);
+            this.radQ4B.Size = new System.Drawing.Size(88, 19);
             this.radQ4B.TabIndex = 8;
             this.radQ4B.TabStop = true;
             this.radQ4B.Text = "《边城》";
@@ -442,9 +472,11 @@
             this.groupBox5.Controls.Add(this.radQ5D);
             this.groupBox5.Controls.Add(this.radQ5C);
             this.groupBox5.Controls.Add(this.radQ5B);
-            this.groupBox5.Location = new System.Drawing.Point(41, 867);
+            this.groupBox5.Location = new System.Drawing.Point(22, 1174);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(636, 258);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(565, 215);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "做题区5";
@@ -452,9 +484,10 @@
             // radQ5A
             // 
             this.radQ5A.AutoSize = true;
-            this.radQ5A.Location = new System.Drawing.Point(6, 85);
+            this.radQ5A.Location = new System.Drawing.Point(5, 71);
+            this.radQ5A.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ5A.Name = "radQ5A";
-            this.radQ5A.Size = new System.Drawing.Size(105, 22);
+            this.radQ5A.Size = new System.Drawing.Size(88, 19);
             this.radQ5A.TabIndex = 12;
             this.radQ5A.TabStop = true;
             this.radQ5A.Text = "《离骚》";
@@ -465,18 +498,19 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(6, 35);
+            this.label5.Location = new System.Drawing.Point(5, 29);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(590, 31);
+            this.label5.Size = new System.Drawing.Size(492, 27);
             this.label5.TabIndex = 11;
             this.label5.Text = "“路漫漫其修远兮，吾将上下而求索”出自哪部作品？";
             // 
             // radQ5D
             // 
             this.radQ5D.AutoSize = true;
-            this.radQ5D.Location = new System.Drawing.Point(6, 220);
+            this.radQ5D.Location = new System.Drawing.Point(5, 183);
+            this.radQ5D.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ5D.Name = "radQ5D";
-            this.radQ5D.Size = new System.Drawing.Size(105, 22);
+            this.radQ5D.Size = new System.Drawing.Size(88, 19);
             this.radQ5D.TabIndex = 10;
             this.radQ5D.TabStop = true;
             this.radQ5D.Text = "《史记》";
@@ -486,9 +520,10 @@
             // radQ5C
             // 
             this.radQ5C.AutoSize = true;
-            this.radQ5C.Location = new System.Drawing.Point(6, 177);
+            this.radQ5C.Location = new System.Drawing.Point(5, 148);
+            this.radQ5C.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ5C.Name = "radQ5C";
-            this.radQ5C.Size = new System.Drawing.Size(105, 22);
+            this.radQ5C.Size = new System.Drawing.Size(88, 19);
             this.radQ5C.TabIndex = 9;
             this.radQ5C.TabStop = true;
             this.radQ5C.Text = "《楚辞》";
@@ -498,9 +533,10 @@
             // radQ5B
             // 
             this.radQ5B.AutoSize = true;
-            this.radQ5B.Location = new System.Drawing.Point(6, 130);
+            this.radQ5B.Location = new System.Drawing.Point(5, 108);
+            this.radQ5B.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radQ5B.Name = "radQ5B";
-            this.radQ5B.Size = new System.Drawing.Size(105, 22);
+            this.radQ5B.Size = new System.Drawing.Size(88, 19);
             this.radQ5B.TabIndex = 8;
             this.radQ5B.TabStop = true;
             this.radQ5B.Text = "《诗经》";
@@ -509,9 +545,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 1570);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1117, 1378);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -524,6 +561,7 @@
             this.Controls.Add(this.txtNum1);
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.lblInfo);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
