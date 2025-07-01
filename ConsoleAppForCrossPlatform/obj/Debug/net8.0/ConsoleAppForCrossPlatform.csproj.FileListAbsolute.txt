@@ -1,0 +1,14 @@
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\bin\Debug\net8.0\ConsoleAppForCrossPlatform.exe
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\bin\Debug\net8.0\ConsoleAppForCrossPlatform.deps.json
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\bin\Debug\net8.0\ConsoleAppForCrossPlatform.runtimeconfig.json
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\bin\Debug\net8.0\ConsoleAppForCrossPlatform.dll
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\bin\Debug\net8.0\ConsoleAppForCrossPlatform.pdb
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.GeneratedMSBuildEditorConfig.editorconfig
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.AssemblyInfoInputs.cache
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.AssemblyInfo.cs
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.csproj.CoreCompileInputs.cache
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.dll
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\refint\ConsoleAppForCrossPlatform.dll
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.pdb
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ConsoleAppForCrossPlatform.genruntimeconfig.cache
+E:\Visual Studio programs\ConsoleAppForCrossPlatform\obj\Debug\net8.0\ref\ConsoleAppForCrossPlatform.dll

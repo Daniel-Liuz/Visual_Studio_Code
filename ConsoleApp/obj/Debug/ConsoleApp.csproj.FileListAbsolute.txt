@@ -1,0 +1,12 @@
+E:\Visual Studio programs\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+E:\Visual Studio programs\ConsoleApp\bin\Debug\ConsoleApp.exe
+E:\Visual Studio programs\ConsoleApp\bin\Debug\ConsoleApp.pdb
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.csproj.AssemblyReference.cache
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.exe
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.pdb
+E:\Visual Studio programs\ConsoleApp\bin\Debug\ConsoleApp.exe.manifest
+E:\Visual Studio programs\ConsoleApp\bin\Debug\ConsoleApp.application
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.exe.config
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.exe.manifest
+E:\Visual Studio programs\ConsoleApp\obj\Debug\ConsoleApp.application
