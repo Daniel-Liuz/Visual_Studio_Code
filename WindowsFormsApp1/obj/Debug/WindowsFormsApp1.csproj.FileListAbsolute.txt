@@ -9,3 +9,5 @@ E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe.config
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3.resources
