@@ -137,5 +137,28 @@ namespace WindowsFormsApp1
                 btnPlayPause.Text = "暂停";
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.ToLower(); // 获取用户输入的关键词并转为小写
+            foreach (TreeNode node in treeView1.Nodes) // 遍历一级分类
+            {
+                foreach (TreeNode subNode in node.Nodes) // 遍历二级分类
+                {
+                    if (subNode.Text.ToLower().Contains(keyword)) // 检查是否包含关键词
+                    {
+                        treeView1.SelectedNode = subNode; // 选中匹配的节点
+                        LoadImages(subNode.FullPath); // 加载该类别的图片
+                        return; // 找到后退出循环
+                    }
+                }
+            }
+            MessageBox.Show("未找到匹配的类别！"); // 如果没找到，提示用户
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
