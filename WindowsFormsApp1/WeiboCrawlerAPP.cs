@@ -1,10 +1,9 @@
-﻿// 文件: WeiboCrawlerForm.cs
+﻿// 文件: WeiboCrawlerForm.cs (已实现列宽调整和顺序重排)
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace WeiboCrawlerApp // 确保这里的命名空间和你的项目名一致
+namespace WeiboCrawlerApp
 {
     public partial class WeiboCrawlerForm : Form
     {
@@ -16,7 +15,6 @@ namespace WeiboCrawlerApp // 确保这里的命名空间和你的项目名一致
 
         private void InitializeCustomComponents()
         {
-            // 在这里设置控件的初始状态
             numMaxCount.Minimum = 1;
             numMaxCount.Maximum = 1000;
             numMaxCount.Value = 20;
@@ -43,7 +41,6 @@ namespace WeiboCrawlerApp // 确保这里的命名空间和你的项目名一致
             try
             {
                 var crawler = new WeiboCrawlerHelper();
-
                 lblStatus.Text = $"正在执行爬取，关键词: '{keywords}'... 请耐心等待。";
                 Application.DoEvents();
 
@@ -51,12 +48,11 @@ namespace WeiboCrawlerApp // 确保这里的命名空间和你的项目名一致
 
                 progressBar.Style = ProgressBarStyle.Blocks;
                 progressBar.Value = progressBar.Maximum;
+
                 dgvResults.DataSource = posts;
-                dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                if (dgvResults.Columns.Contains("Content"))
-                {
-                    dgvResults.Columns["Content"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
+
+                // 每次都调用这个方法来美化表格
+                CustomizeDataGridViewColumns();
 
                 lblStatus.Text = $"任务完成！成功加载了 {posts.Count} 条数据。";
                 MessageBox.Show($"任务完成！成功加载了 {posts.Count} 条数据。", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -73,6 +69,53 @@ namespace WeiboCrawlerApp // 确保这里的命名空间和你的项目名一致
                 btnStartCrawler.Enabled = true;
                 this.Cursor = Cursors.Default;
                 progressBar.Value = 0;
+            }
+        }
+
+        /// <summary>
+        /// 自定义 DataGridView 的列显示、顺序和宽度。
+        /// </summary>
+        private void CustomizeDataGridViewColumns()
+        {
+            if (dgvResults.DataSource == null) return;
+
+            // 步骤1：先全部隐藏
+            foreach (DataGridViewColumn col in dgvResults.Columns)
+            {
+                col.Visible = false;
+            }
+
+            // 步骤2：设置我们想看的列的属性
+            // 我们将按照 Nickname -> Gender -> Content 的顺序来设置它们的 DisplayIndex
+
+            if (dgvResults.Columns.Contains("Nickname"))
+            {
+                var col = dgvResults.Columns["Nickname"];
+                col.Visible = true;
+                col.HeaderText = "用户昵称";
+                col.DisplayIndex = 0; // 【新功能】设置为第一列
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // 让其宽度自适应内容
+            }
+
+            if (dgvResults.Columns.Contains("Gender"))
+            {
+                var col = dgvResults.Columns["Gender"];
+                col.Visible = true;
+                col.HeaderText = "性别";
+                col.DisplayIndex = 1; // 【新功能】设置为第二列
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // 让其宽度自适应内容
+            }
+
+            if (dgvResults.Columns.Contains("Content"))
+            {
+                var col = dgvResults.Columns["Content"];
+                col.Visible = true;
+                col.HeaderText = "微博内容";
+                col.DisplayIndex = 2; // 【新功能】设置为第三列
+
+                // 【核心】将内容列的宽度模式设置为 Fill
+                // 这会让它自动填充表格中剩余的所有可用空间
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
     }
