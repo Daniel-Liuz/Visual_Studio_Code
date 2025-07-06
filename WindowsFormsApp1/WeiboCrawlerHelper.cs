@@ -1,10 +1,9 @@
-﻿// 文件: WeiboCrawlerHelper.cs (已修正分隔符问题)
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
+using System.Linq; // 确保包含 Linq 命名空间以便使用 Take() 方法
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -13,12 +12,11 @@ using CsvHelper.Configuration;
 
 public class WeiboCrawlerHelper
 {
-    // --- 配置区域保持不变，请确保路径正确 ---
+    // --- 配置区域保持不变 ---
     private const string PythonExePath = @"D:\Anaconda\envs\Mediacrawler\python.exe";
     private const string PythonProjectDir = @"E:\Project_Collection\2023-2024项目合集\市场调研大赛\爬虫\Mediacrawler\MediaCrawler\";
     private const string CsvOutputDir = @"E:\Project_Collection\2023-2024项目合集\市场调研大赛\爬虫\Mediacrawler\MediaCrawler\data\weibo\";
 
-    // ... 其他代码保持不变 ...
     private readonly string _configFilePath;
     private readonly string _mainScriptPath;
 
@@ -34,20 +32,99 @@ public class WeiboCrawlerHelper
 
     public async Task<List<WeiboPost>> RunCrawlerAsync(string keywords, int maxNotesCount)
     {
+        // 1. 在每次爬取前清理旧的 CSV 文件，确保数据干净
+        ClearPreviousCsvFiles();
+
+        // 2. 修改 Python 配置文件中的关键词和最大笔记数量
         ModifyConfigFile(keywords, maxNotesCount);
+
+        // 3. 执行 Python 脚本
         string output = await ExecutePythonScriptAsync();
         Debug.WriteLine("Python Script Output:\n" + output);
+
+        // 4. 查找最新的 CSV 结果文件
         string latestCsvFile = FindLatestCsvFile();
-        if (string.IsNullOrEmpty(latestCsvFile)) throw new FileNotFoundException($"爬虫执行完毕，但在目录 '{CsvOutputDir}' 中找不到任何 CSV 结果文件。");
-        return ReadCsvData(latestCsvFile);
+        if (string.IsNullOrEmpty(latestCsvFile))
+        {
+            throw new FileNotFoundException($"爬虫执行完毕，但在目录 '{CsvOutputDir}' 中找不到任何 CSV 结果文件。");
+        }
+
+        // 5. 读取 CSV 数据
+        List<WeiboPost> allPosts = ReadCsvData(latestCsvFile);
+
+        // 【核心修改】6. 根据 maxNotesCount 截断数据
+        // 如果实际爬取到的数据量大于用户设定的上限，则只取前 maxNotesCount 条
+        if (allPosts.Count > maxNotesCount)
+        {
+            Debug.WriteLine($"实际爬取到 {allPosts.Count} 条数据，将截断至用户设定的 {maxNotesCount} 条。");
+            return allPosts.Take(maxNotesCount).ToList();
+        }
+        else
+        {
+            Debug.WriteLine($"实际爬取到 {allPosts.Count} 条数据，未超过用户设定的 {maxNotesCount} 条。");
+            return allPosts;
+        }
     }
 
+    /// <summary>
+    /// 清理指定输出目录下所有旧的 .csv 文件。
+    /// </summary>
+    private void ClearPreviousCsvFiles()
+    {
+        if (!Directory.Exists(CsvOutputDir))
+        {
+            Debug.WriteLine($"CSV 输出目录 '{CsvOutputDir}' 不存在，无需清理。");
+            return;
+        }
+
+        try
+        {
+            DirectoryInfo directory = new DirectoryInfo(CsvOutputDir);
+            foreach (FileInfo file in directory.GetFiles("*.csv"))
+            {
+                file.Delete(); // 删除文件
+                Debug.WriteLine($"已删除旧的 CSV 文件: {file.FullName}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"清理旧的 CSV 文件时发生错误: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 修改 Python 配置文件中指定的关键词和最大笔记数量。
+    /// </summary>
     private void ModifyConfigFile(string keywords, int maxNotesCount)
     {
-        string content = File.ReadAllText(_configFilePath, Encoding.UTF8);
-        content = Regex.Replace(content, @"^(\s*KEYWORDS\s*=\s*).*", $"$1\"{keywords}\"", RegexOptions.Multiline);
-        content = Regex.Replace(content, @"^(\s*CRAWLER_MAX_NOTES_COUNT\s*=\s*).*", $"$1{maxNotesCount}", RegexOptions.Multiline);
-        File.WriteAllText(_configFilePath, content, Encoding.UTF8);
+        string[] allLines = File.ReadAllLines(_configFilePath, Encoding.UTF8);
+        List<string> newLines = new List<string>();
+
+        Regex keywordsPrefixRegex = new Regex(@"^(\s*KEYWORDS\s*=\s*)", RegexOptions.Singleline);
+        Regex maxCountPrefixRegex = new Regex(@"^(\s*CRAWLER_MAX_NOTES_COUNT\s*=\s*)", RegexOptions.Singleline);
+
+        foreach (string line in allLines)
+        {
+            Match keywordsMatch = keywordsPrefixRegex.Match(line);
+            if (keywordsMatch.Success)
+            {
+                string prefix = keywordsMatch.Groups[1].Value;
+                newLines.Add($"{prefix}\"{keywords}\"");
+                continue;
+            }
+
+            Match maxCountMatch = maxCountPrefixRegex.Match(line);
+            if (maxCountMatch.Success)
+            {
+                string prefix = maxCountMatch.Groups[1].Value;
+                newLines.Add($"{prefix}{maxNotesCount}");
+                continue;
+            }
+
+            newLines.Add(line);
+        }
+
+        File.WriteAllText(_configFilePath, string.Join(Environment.NewLine, newLines), Encoding.UTF8);
     }
 
     private Task<string> ExecutePythonScriptAsync()
@@ -69,12 +146,11 @@ public class WeiboCrawlerHelper
         return directory.GetFiles("*.csv").OrderByDescending(f => f.CreationTime).FirstOrDefault()?.FullName;
     }
 
-    // [已修正] 修改这个方法中的 Delimiter
     private List<WeiboPost> ReadCsvData(string filePath)
     {
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
-            Delimiter = ",", // ✅ 使用逗号作为分隔符
+            Delimiter = ",",
             HeaderValidated = null,
             MissingFieldFound = null,
         };
