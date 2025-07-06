@@ -38,3 +38,14 @@ E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\JiebaNet.Segmenter.dll
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.分词.resources
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.IO.Pipelines.dll
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Net.Http.Json.dll
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Text.Encodings.Web.dll
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Text.Json.dll
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.IO.Pipelines.xml
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Net.Http.Json.xml
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Text.Encodings.Web.xml
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Text.Json.xml
+E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.ValueTuple.xml
+E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.NLP.resources
