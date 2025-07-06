@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.txtKeywords = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,9 +40,11 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.chartGenderDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGenderDistribution)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -105,7 +110,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus,
             this.progressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 509);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 686);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
             this.statusStrip1.Size = new System.Drawing.Size(900, 31);
@@ -123,11 +128,29 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(225, 23);
             // 
+            // chartGenderDistribution
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartGenderDistribution.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartGenderDistribution.Legends.Add(legend1);
+            this.chartGenderDistribution.Location = new System.Drawing.Point(27, 439);
+            this.chartGenderDistribution.Name = "chartGenderDistribution";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartGenderDistribution.Series.Add(series1);
+            this.chartGenderDistribution.Size = new System.Drawing.Size(310, 300);
+            this.chartGenderDistribution.TabIndex = 7;
+            this.chartGenderDistribution.Text = "chart1";
+            this.chartGenderDistribution.Click += new System.EventHandler(this.chartGenderDistribution_Click);
+            // 
             // WeiboCrawlerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 540);
+            this.ClientSize = new System.Drawing.Size(900, 717);
+            this.Controls.Add(this.chartGenderDistribution);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dgvResults);
             this.Controls.Add(this.btnStartCrawler);
@@ -142,6 +165,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGenderDistribution)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +182,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGenderDistribution;
     }
 }
