@@ -48,3 +48,4 @@ E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Text.Encodings.Web.x
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Text.Json.xml
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.ValueTuple.xml
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.NLP.resources
+E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Bili.resources
