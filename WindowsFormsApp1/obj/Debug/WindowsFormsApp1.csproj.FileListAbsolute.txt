@@ -5,7 +5,6 @@ E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3.reso
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
-E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WeiboCrawlerApp.WeiboCrawlerForm.resources
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
