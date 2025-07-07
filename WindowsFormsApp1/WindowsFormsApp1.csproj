@@ -139,12 +139,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiDataModels.cs" />
-    <Compile Include="Bili.cs">
+    <Compile Include="bili.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bili.Designer.cs">
-      <DependentUpon>Bili.cs</DependentUpon>
+    <Compile Include="bili.Designer.cs">
+      <DependentUpon>bili.cs</DependentUpon>
     </Compile>
+    <Compile Include="BiliAnalysisService.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,8 +178,8 @@
     <Compile Include="分词.Designer.cs">
       <DependentUpon>分词.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Bili.resx">
-      <DependentUpon>Bili.cs</DependentUpon>
+    <EmbeddedResource Include="bili.resx">
+      <DependentUpon>bili.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

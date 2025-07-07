@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BiliCommentAnalysis;
 
 namespace WindowsFormsApp1
 {
@@ -19,7 +20,8 @@ namespace WindowsFormsApp1
             //Application.Run(new Form1());
             //Application.Run(new Form2());
             //Application.Run(new Form3());
-            Application.Run(new NLP());
+            //Application.Run(new NLP());
+            Application.Run(new BiliCommentAnalysis.Form1());
         }
     }
 }

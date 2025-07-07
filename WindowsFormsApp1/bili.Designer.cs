@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿namespace BiliCommentAnalysis
 {
-    partial class bili
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -44,11 +44,13 @@
             this.sentimentChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.wordCloudPictureBox = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.displayCountNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.genderChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sentimentChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wordCloudPictureBox)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -91,6 +93,7 @@
             this.startButton.TabIndex = 4;
             this.startButton.Text = "执行所有操作";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // commentsDataGridView
             // 
@@ -145,11 +148,19 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1055);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1046);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(800, 31);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(82, 24);
+            this.statusLabel.Text = "准备就绪";
             // 
             // bili
             // 
@@ -173,6 +184,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.genderChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sentimentChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wordCloudPictureBox)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +203,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart sentimentChart;
         private System.Windows.Forms.PictureBox wordCloudPictureBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
     }
 }
