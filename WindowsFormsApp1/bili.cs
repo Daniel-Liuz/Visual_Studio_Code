@@ -15,7 +15,7 @@ namespace BiliCommentAnalysis
         public Form1()
         {
             InitializeComponent();
-            _analysisService = new BiliAnalysisService();
+            _analysisService = new BiliAnalysisService(this);
 
             // 将Service的进度更新委托指向我们的UI更新方法
             _analysisService.OnProgressUpdate = (message) =>

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.KeywordTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -107,32 +107,32 @@
             // 
             // genderChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.genderChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.genderChart.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.genderChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.genderChart.Legends.Add(legend5);
             this.genderChart.Location = new System.Drawing.Point(47, 397);
             this.genderChart.Name = "genderChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.genderChart.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.genderChart.Series.Add(series5);
             this.genderChart.Size = new System.Drawing.Size(300, 300);
             this.genderChart.TabIndex = 6;
             this.genderChart.Text = "chart1";
             // 
             // sentimentChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.sentimentChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.sentimentChart.Legends.Add(legend4);
+            chartArea6.Name = "ChartArea1";
+            this.sentimentChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.sentimentChart.Legends.Add(legend6);
             this.sentimentChart.Location = new System.Drawing.Point(391, 397);
             this.sentimentChart.Name = "sentimentChart";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.sentimentChart.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.sentimentChart.Series.Add(series6);
             this.sentimentChart.Size = new System.Drawing.Size(300, 300);
             this.sentimentChart.TabIndex = 7;
             this.sentimentChart.Text = "chart1";
@@ -162,7 +162,7 @@
             this.statusLabel.Size = new System.Drawing.Size(82, 24);
             this.statusLabel.Text = "准备就绪";
             // 
-            // bili
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -177,7 +177,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.KeywordTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "bili";
+            this.Name = "Form1";
             this.Text = "bili";
             ((System.ComponentModel.ISupportInitialize)(this.displayCountNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commentsDataGridView)).EndInit();
@@ -198,11 +198,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown displayCountNumeric;
         private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.DataGridView commentsDataGridView;
         private System.Windows.Forms.DataVisualization.Charting.Chart genderChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart sentimentChart;
         private System.Windows.Forms.PictureBox wordCloudPictureBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        public System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        public System.Windows.Forms.DataGridView commentsDataGridView;
     }
 }
