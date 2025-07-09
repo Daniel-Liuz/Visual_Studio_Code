@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using SQL;
+using System.Drawing;
+
 
 namespace WindowsFormsApp1
 {
@@ -95,7 +97,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void LoadStudentsData()
         {
-            string sql = "SELECT studentNo, studentName, Birthday FROM tblStudents";
+            string sql = "SELECT studentNo, studentName, Birthday,Gender,Major FROM tblTopStudents";
             DataSet ds = new DataSet();
 
             try
@@ -153,12 +155,12 @@ namespace WindowsFormsApp1
             if (selectedMajor == "全部显示")
             {
                 // 如果选择了“全部显示”，显示所有学生
-                sql = "SELECT studentNo, studentName, Birthday FROM tblStudents";
+                sql = "SELECT studentNo, studentName, Birthday FROM tblTopStudents";
             }
             else
             {
                 // 根据选择的专业筛选学生
-                sql = string.Format("SELECT studentNo, studentName, Birthday FROM tblStudents WHERE major = '{0}'", selectedMajor);
+                sql = string.Format("SELECT studentNo, studentName, Birthday FROM tblTopStudents WHERE major = '{0}'", selectedMajor);
             }
 
             DataSet ds = new DataSet();
@@ -221,5 +223,149 @@ namespace WindowsFormsApp1
         {
 
         }
+        
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的是数据行且不是标题行
+            if (e.RowIndex >= 0)
+            {
+                // 获取被点击的行
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                // 将行中的单元格值赋给文本框
+                txtStudentName.Text = row.Cells["studentName"].Value?.ToString() ?? string.Empty;
+                txtStudentNo.Text = row.Cells["studentNo"].Value?.ToString() ?? string.Empty;
+                txtMajor.Text = row.Cells["major"].Value?.ToString() ?? string.Empty;
+
+                // 根据性别显示不同的头像
+                try
+                {
+                    if (row.Cells["Gender"].Value?.ToString() == "1") // 男
+                    {
+                        pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\boy.png");
+                    }
+                    else if (row.Cells["Gender"].Value?.ToString() == "0") // 女
+                    {
+                        pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\girl.png");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("加载图片失败: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string studentNoToSearch = txtSearchStudentNo.Text.Trim(); // 获取并清理输入
+
+            if (string.IsNullOrWhiteSpace(studentNoToSearch))
+            {
+                MessageBox.Show("请输入要查询的学号！");
+                return;
+            }
+
+            // 构建查询SQL
+            string sql = string.Format("SELECT studentNo, studentName, Birthday, Gender, Major FROM tblTopStudents WHERE studentNo = '{0}'", studentNoToSearch);
+            DataSet ds = new DataSet();
+
+            try
+            {
+                sh.RunSQL(sql, ref ds);
+
+                // 检查是否查询到了结果
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow row = ds.Tables[0].Rows[0]; // 获取第一行数据
+
+                    // 将数据填充到界面控件中
+                    txtStudentName.Text = row["studentName"]?.ToString() ?? string.Empty;
+                    txtStudentNo.Text = row["studentNo"]?.ToString() ?? string.Empty;
+                    txtMajor.Text = row["major"]?.ToString() ?? string.Empty;
+
+                    // 根据性别显示不同的头像
+                    try
+                    {
+                        if (row["Gender"]?.ToString() == "1") // 男
+                        {
+                            pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\boy.png");
+                        }
+                        else if (row["Gender"]?.ToString() == "0") // 女
+                        {
+                            pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\girl.png");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("加载图片失败: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("未找到该学号的学生。");
+                }
+            }
+            catch (Exception ex)
+            {
+                msg = "查询学生数据失败：" + ex.Message;
+                MessageBox.Show(msg);
+            }
+            finally
+            {
+                sh.Close();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string studentNoToUpdate = txtStudentNo.Text.Trim();
+            string newMajor = txtMajor.Text.Trim();
+
+            // 验证输入
+            if (string.IsNullOrWhiteSpace(studentNoToUpdate))
+            {
+                MessageBox.Show("请先通过查询或在表格中点击来选择一个学生！");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(newMajor))
+            {
+                MessageBox.Show("专业名称不能为空！");
+                return;
+            }
+
+            // 构建更新SQL语句
+            string sql = string.Format("UPDATE tblTopStudents SET major = '{0}' WHERE studentNo = '{1}'", newMajor, studentNoToUpdate);
+            msg = string.Empty;
+
+            try
+            {
+                // 执行更新操作
+                int rowsAffected = sh.RunSQL(sql);
+
+                if (rowsAffected > 0)
+                {
+                    msg = "专业信息修改成功！";
+                    LoadStudentsData(); // 核心步骤：刷新DataGridView2中的数据
+                    MessageBox.Show(msg);
+                }
+                else
+                {
+                    msg = "修改失败，数据库中没有记录被更新。请检查学号是否正确。";
+                    MessageBox.Show(msg);
+                }
+            }
+            catch (Exception ex)
+            {
+                msg = "修改失败：" + ex.Message;
+                MessageBox.Show(msg);
+            }
+            finally
+            {
+                sh.Close();
+            }
+        }
+
     }
 }
