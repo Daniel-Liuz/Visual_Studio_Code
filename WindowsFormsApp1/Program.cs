@@ -21,7 +21,8 @@ namespace WindowsFormsApp1
             //Application.Run(new Form2());
             //Application.Run(new Form3());
             //Application.Run(new NLP());
-            Application.Run(new BiliCommentAnalysis.Form1());
+            //Application.Run(new BiliCommentAnalysis.Form1());
+            Application.Run(new frmSQL());
         }
     }
 }
