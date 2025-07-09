@@ -223,42 +223,23 @@ namespace WindowsFormsApp1
         {
 
         }
-        
+
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 确保点击的是数据行且不是标题行
+            // 确保点击的是有效的数据行且不是标题行
             if (e.RowIndex >= 0)
             {
                 // 获取被点击的行
-                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+                DataGridViewRow clickedRow = dataGridView2.Rows[e.RowIndex];
 
-                // 将行中的单元格值赋给文本框
-                txtStudentName.Text = row.Cells["studentName"].Value?.ToString() ?? string.Empty;
-                txtStudentNo.Text = row.Cells["studentNo"].Value?.ToString() ?? string.Empty;
-                txtMajor.Text = row.Cells["major"].Value?.ToString() ?? string.Empty;
-
-                // 根据性别显示不同的头像
-                try
-                {
-                    if (row.Cells["Gender"].Value?.ToString() == "1") // 男
-                    {
-                        pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\boy.png");
-                    }
-                    else if (row.Cells["Gender"].Value?.ToString() == "0") // 女
-                    {
-                        pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\girl.png");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("加载图片失败: " + ex.Message);
-                }
+                // 调用我们创建的新方法来显示信息
+                DisplayStudentDetails(clickedRow);
             }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string studentNoToSearch = txtSearchStudentNo.Text.Trim(); // 获取并清理输入
+            string studentNoToSearch = txtSearchStudentNo.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(studentNoToSearch))
             {
@@ -266,7 +247,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // 构建查询SQL
             string sql = string.Format("SELECT studentNo, studentName, Birthday, Gender, Major FROM tblTopStudents WHERE studentNo = '{0}'", studentNoToSearch);
             DataSet ds = new DataSet();
 
@@ -274,32 +254,41 @@ namespace WindowsFormsApp1
             {
                 sh.RunSQL(sql, ref ds);
 
-                // 检查是否查询到了结果
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    DataRow row = ds.Tables[0].Rows[0]; // 获取第一行数据
+                    DataRow row = ds.Tables[0].Rows[0];
 
                     // 将数据填充到界面控件中
                     txtStudentName.Text = row["studentName"]?.ToString() ?? string.Empty;
                     txtStudentNo.Text = row["studentNo"]?.ToString() ?? string.Empty;
                     txtMajor.Text = row["major"]?.ToString() ?? string.Empty;
 
-                    // 根据性别显示不同的头像
+                    // --- 开始更新图片加载逻辑 ---
+                    string genderValue = row["Gender"]?.ToString().Trim();
+
+                    // 先清空图片
+                    pictureBox1.Image = null;
+
                     try
                     {
-                        if (row["Gender"]?.ToString() == "1") // 男
+                        if (genderValue == "1") // 男
                         {
                             pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\boy.png");
                         }
-                        else if (row["Gender"]?.ToString() == "0") // 女
+                        else if (genderValue == "0") // 女
                         {
                             pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\girl.png");
                         }
+                    }
+                    catch (System.IO.FileNotFoundException)
+                    {
+                        MessageBox.Show("头像图片文件未找到，请检查路径。");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("加载图片失败: " + ex.Message);
                     }
+                    // --- 结束更新图片加载逻辑 ---
                 }
                 else
                 {
@@ -366,7 +355,45 @@ namespace WindowsFormsApp1
                 sh.Close();
             }
         }
+        private void DisplayStudentDetails(DataGridViewRow row)
+        {
+            if (row == null) return;
 
+            // 将行中的单元格值赋给文本框
+            txtStudentName.Text = row.Cells["studentName"].Value?.ToString() ?? string.Empty;
+            txtStudentNo.Text = row.Cells["studentNo"].Value?.ToString() ?? string.Empty;
+            txtMajor.Text = row.Cells["major"].Value?.ToString() ?? string.Empty;
+
+            // 获取Gender的值并进行清理
+            string genderValue = row.Cells["Gender"].Value?.ToString();
+
+            // 先清空当前的图片
+            pictureBox1.Image = null;
+
+            try
+            {
+                // 根据性别显示不同的头像
+                if (genderValue == "True") // 男
+                {
+                    pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\boy.png");
+                }
+                else if (genderValue == "False") // 女
+                {
+                    pictureBox1.Image = Image.FromFile(@"E:\Visual Studio programs\WindowsFormsApp1\pics\Gender\girl.png");
+                }
+                // 如果有其他情况或默认图片，可以在这里加一个 else
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                // 文件找不到的特定错误
+                MessageBox.Show("头像图片文件未找到，请检查路径是否正确。");
+            }
+            catch (Exception ex)
+            {
+                // 其他加载图片的错误
+                MessageBox.Show("加载图片失败: " + ex.Message);
+            }
+        }
         private void label6_Click(object sender, EventArgs e)
         {
 
