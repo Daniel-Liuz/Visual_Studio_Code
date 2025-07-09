@@ -21,7 +21,37 @@ namespace WindowsFormsApp1
 
         private void frmSQL_Load(object sender, EventArgs e)
         {
-            InitMajorComboBox();
+            InitMajorComboBox();  // 初始化专业下拉框
+            LoadCheckInData();    // 加载已打卡数据
+            LoadStudentsData();   // 加载学生数据
+        }
+
+        /// <summary>
+        /// 加载已打卡数据
+        /// </summary>
+        private void LoadCheckInData()
+        {
+            string sql = "SELECT studentNumber, dtedate FROM tblStudentAbsent";
+            DataSet ds = new DataSet();
+
+            try
+            {
+                sh.RunSQL(sql, ref ds);
+                DataTable dt = ds.Tables[0];
+
+                // 绑定 DataGridView1
+                dataGridView1.DataSource = dt;
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                msg = "加载数据失败：" + ex.Message;
+                MessageBox.Show(msg);
+            }
+            finally
+            {
+                sh.Close();
+            }
         }
 
         /// <summary>
@@ -61,7 +91,35 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// 查询班级人数（按钮点击）
+        /// 加载学生数据
+        /// </summary>
+        private void LoadStudentsData()
+        {
+            string sql = "SELECT studentNo, studentName, Birthday FROM tblStudents";
+            DataSet ds = new DataSet();
+
+            try
+            {
+                sh.RunSQL(sql, ref ds);
+                DataTable dt = ds.Tables[0];
+
+                // 绑定 DataGridView2
+                dataGridView2.DataSource = dt;
+                dataGridView2.Refresh();
+            }
+            catch (Exception ex)
+            {
+                msg = "加载学生数据失败：" + ex.Message;
+                MessageBox.Show(msg);
+            }
+            finally
+            {
+                sh.Close();
+            }
+        }
+
+        /// <summary>
+        /// 查询班级人数
         /// </summary>
         private void btnLink_Click(object sender, EventArgs e)
         {
@@ -85,36 +143,68 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// 查询所选专业（另一个按钮点击）
+        /// 查询所选专业并显示相关学生
         /// </summary>
         private void btnQuery_Click(object sender, EventArgs e)
         {
             string selectedMajor = cboMajor.SelectedValue.ToString();
+            string sql = "";
 
             if (selectedMajor == "全部显示")
             {
-                MessageBox.Show("你选择的是：全部专业");
+                // 如果选择了“全部显示”，显示所有学生
+                sql = "SELECT studentNo, studentName, Birthday FROM tblStudents";
             }
             else
             {
-                MessageBox.Show("你选择的专业是：" + selectedMajor);
+                // 根据选择的专业筛选学生
+                sql = string.Format("SELECT studentNo, studentName, Birthday FROM tblStudents WHERE major = '{0}'", selectedMajor);
+            }
+
+            DataSet ds = new DataSet();
+
+            try
+            {
+                sh.RunSQL(sql, ref ds);
+                DataTable dt = ds.Tables[0];
+
+                // 绑定到 DataGridView2
+                dataGridView2.DataSource = dt;
+                dataGridView2.Refresh();
+            }
+            catch (Exception ex)
+            {
+                msg = "查询数据失败：" + ex.Message;
+                MessageBox.Show(msg);
+            }
+            finally
+            {
+                sh.Close();
             }
         }
 
+        /// <summary>
+        /// 打卡按钮点击事件
+        /// </summary>
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
             string studentNumber = "10235501456"; // 你的学号
             string msg = "";
+            string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // 获取当前时间
 
             try
             {
-                string sql = string.Format("INSERT INTO tblStudentAbsent(studentNumber) VALUES('{0}')", studentNumber);
+                // 插入打卡记录（包括当前时间）
+                string sql = string.Format("INSERT INTO tblStudentAbsent (studentNumber, dtedate) VALUES ('{0}', '{1}')", studentNumber, currentDate);
                 int ret = sh.RunSQL(sql); // 执行插入操作
 
                 if (ret > 0)
                     msg = "打卡成功！";
                 else
                     msg = "打卡失败，数据库未插入任何行。";
+
+                // 重新加载 DataGridView 数据
+                LoadCheckInData();
             }
             catch (Exception ex)
             {
@@ -125,6 +215,11 @@ namespace WindowsFormsApp1
                 sh.Close();
                 MessageBox.Show(msg);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
