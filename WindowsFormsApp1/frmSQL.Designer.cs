@@ -63,6 +63,9 @@
             this.chartGender = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label14 = new System.Windows.Forms.Label();
             this.btnShowMajorChart = new System.Windows.Forms.Button();
+            this.txtBirthday = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -191,11 +194,11 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(593, 718);
+            this.btnUpdate.Location = new System.Drawing.Point(602, 759);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 37);
             this.btnUpdate.TabIndex = 13;
-            this.btnUpdate.Text = "修改专业";
+            this.btnUpdate.Text = "信息修改";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -220,7 +223,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(491, 664);
+            this.label4.Location = new System.Drawing.Point(491, 674);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 18);
             this.label4.TabIndex = 16;
@@ -265,7 +268,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.Font = new System.Drawing.Font("Cooper Black", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(520, 799);
+            this.label8.Location = new System.Drawing.Point(520, 828);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(613, 35);
             this.label8.TabIndex = 20;
@@ -386,11 +389,41 @@
             this.btnShowMajorChart.UseVisualStyleBackColor = true;
             this.btnShowMajorChart.Click += new System.EventHandler(this.btnShowMajorChart_Click);
             // 
+            // txtBirthday
+            // 
+            this.txtBirthday.Location = new System.Drawing.Point(565, 725);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Size = new System.Drawing.Size(154, 28);
+            this.txtBirthday.TabIndex = 34;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(491, 728);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 18);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "生日";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label16.Font = new System.Drawing.Font("Cooper Black", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(520, 886);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(297, 35);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "支持专业or生日修改";
+            // 
             // frmSQL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 1049);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtBirthday);
             this.Controls.Add(this.btnShowMajorChart);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.chartGender);
@@ -468,5 +501,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartGender;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnShowMajorChart;
+        private System.Windows.Forms.TextBox txtBirthday;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

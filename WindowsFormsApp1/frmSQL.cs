@@ -263,7 +263,14 @@ namespace WindowsFormsApp1
                     txtStudentName.Text = row["studentName"]?.ToString() ?? string.Empty;
                     txtStudentNo.Text = row["studentNo"]?.ToString() ?? string.Empty;
                     txtMajor.Text = row["major"]?.ToString() ?? string.Empty;
-
+                    if (row["Birthday"] != DBNull.Value)
+                    {
+                        txtBirthday.Text = Convert.ToDateTime(row["Birthday"]).ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtBirthday.Text = string.Empty;
+                    }
                     // --- 开始更新图片加载逻辑 ---
                     string genderValue = row["Gender"]?.ToString().Trim();
 
@@ -311,8 +318,10 @@ namespace WindowsFormsApp1
         {
             string studentNoToUpdate = txtStudentNo.Text.Trim();
             string newMajor = txtMajor.Text.Trim();
+            // 1. 获取生日文本框中的内容
+            string newBirthdayStr = txtBirthday.Text.Trim();
 
-            // 验证输入
+            // 2. 验证学号和专业输入
             if (string.IsNullOrWhiteSpace(studentNoToUpdate))
             {
                 MessageBox.Show("请先通过查询或在表格中点击来选择一个学生！");
@@ -325,19 +334,32 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // 构建更新SQL语句
-            string sql = string.Format("UPDATE tblTopStudents SET major = '{0}' WHERE studentNo = '{1}'", newMajor, studentNoToUpdate);
+            // 3. 验证生日格式是否正确
+            DateTime newBirthday;
+            if (!DateTime.TryParse(newBirthdayStr, out newBirthday))
+            {
+                MessageBox.Show("生日格式不正确，请输入有效的日期，例如：2000-01-01");
+                return;
+            }
+
+            // 4. 构建包含专业和生日的更新SQL语句
+            // 使用参数化查询来防止SQL注入，这是一个更安全的做法
+            string sql = string.Format("UPDATE tblTopStudents SET major = '{0}', Birthday = '{1}' WHERE studentNo = '{2}'",
+                                       newMajor,
+                                       newBirthday.ToString("yyyy-MM-dd"), // 确保日期格式与数据库兼容
+                                       studentNoToUpdate);
             msg = string.Empty;
 
             try
             {
-                // 执行更新操作
+                // 5. 执行更新操作
                 int rowsAffected = sh.RunSQL(sql);
 
                 if (rowsAffected > 0)
                 {
-                    msg = "专业信息修改成功！";
-                    LoadStudentsData(); // 核心步骤：刷新DataGridView2中的数据
+                    // 6. 更新成功提示
+                    msg = "信息修改成功！";
+                    LoadStudentsData(); // 核心步骤：刷新DataGridView2中的数据以显示更新
                     MessageBox.Show(msg);
                 }
                 else
@@ -364,7 +386,14 @@ namespace WindowsFormsApp1
             txtStudentName.Text = row.Cells["studentName"].Value?.ToString() ?? string.Empty;
             txtStudentNo.Text = row.Cells["studentNo"].Value?.ToString() ?? string.Empty;
             txtMajor.Text = row.Cells["major"].Value?.ToString() ?? string.Empty;
-
+            if (row.Cells["Birthday"].Value != null && row.Cells["Birthday"].Value != DBNull.Value)
+            {
+                txtBirthday.Text = Convert.ToDateTime(row.Cells["Birthday"].Value).ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                txtBirthday.Text = string.Empty;
+            }
             // 获取Gender的值并进行清理
             string genderValue = row.Cells["Gender"].Value?.ToString();
 
