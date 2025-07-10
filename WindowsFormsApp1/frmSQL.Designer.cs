@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnLink = new System.Windows.Forms.Button();
             this.cboMajor = new System.Windows.Forms.ComboBox();
             this.btnQuery = new System.Windows.Forms.Button();
@@ -52,9 +55,18 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnSearchByName = new System.Windows.Forms.Button();
+            this.txtNameSearch = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnShowGenderChart = new System.Windows.Forms.Button();
+            this.chartGender = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnShowMajorChart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGender)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLink
@@ -255,9 +267,9 @@
             this.label8.Font = new System.Drawing.Font("Cooper Black", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(520, 799);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(455, 35);
+            this.label8.Size = new System.Drawing.Size(613, 35);
             this.label8.TabIndex = 20;
-            this.label8.Text = "支持点击or学号查询or专业查询";
+            this.label8.Text = "支持点击or学号查询or专业查询or姓名查询";
             // 
             // label9
             // 
@@ -284,17 +296,109 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 928);
+            this.label12.Location = new System.Drawing.Point(9, 936);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(116, 18);
             this.label12.TabIndex = 24;
             this.label12.Text = "按专业查询：";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 991);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(116, 18);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "按姓名查询：";
+            // 
+            // btnSearchByName
+            // 
+            this.btnSearchByName.Location = new System.Drawing.Point(398, 984);
+            this.btnSearchByName.Name = "btnSearchByName";
+            this.btnSearchByName.Size = new System.Drawing.Size(98, 33);
+            this.btnSearchByName.TabIndex = 27;
+            this.btnSearchByName.Text = "查询";
+            this.btnSearchByName.UseVisualStyleBackColor = true;
+            this.btnSearchByName.Click += new System.EventHandler(this.btnSearchByName_Click);
+            // 
+            // txtNameSearch
+            // 
+            this.txtNameSearch.Location = new System.Drawing.Point(145, 987);
+            this.txtNameSearch.Name = "txtNameSearch";
+            this.txtNameSearch.Size = new System.Drawing.Size(193, 28);
+            this.txtNameSearch.TabIndex = 28;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label13.Font = new System.Drawing.Font("Dubai", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(864, 200);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(216, 51);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "2.性别分布";
+            // 
+            // btnShowGenderChart
+            // 
+            this.btnShowGenderChart.Location = new System.Drawing.Point(873, 254);
+            this.btnShowGenderChart.Name = "btnShowGenderChart";
+            this.btnShowGenderChart.Size = new System.Drawing.Size(176, 70);
+            this.btnShowGenderChart.TabIndex = 30;
+            this.btnShowGenderChart.Text = "显示性别分布";
+            this.btnShowGenderChart.UseVisualStyleBackColor = true;
+            this.btnShowGenderChart.Click += new System.EventHandler(this.btnShowGenderChart_Click);
+            // 
+            // chartGender
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartGender.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartGender.Legends.Add(legend2);
+            this.chartGender.Location = new System.Drawing.Point(526, 115);
+            this.chartGender.Name = "chartGender";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartGender.Series.Add(series2);
+            this.chartGender.Size = new System.Drawing.Size(300, 300);
+            this.chartGender.TabIndex = 31;
+            this.chartGender.Text = "chart1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label14.Font = new System.Drawing.Font("Dubai", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(864, 342);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(216, 51);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "3.专业分布";
+            // 
+            // btnShowMajorChart
+            // 
+            this.btnShowMajorChart.Location = new System.Drawing.Point(873, 396);
+            this.btnShowMajorChart.Name = "btnShowMajorChart";
+            this.btnShowMajorChart.Size = new System.Drawing.Size(176, 70);
+            this.btnShowMajorChart.TabIndex = 33;
+            this.btnShowMajorChart.Text = "显示专业分布";
+            this.btnShowMajorChart.UseVisualStyleBackColor = true;
+            this.btnShowMajorChart.Click += new System.EventHandler(this.btnShowMajorChart_Click);
             // 
             // frmSQL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 1049);
+            this.Controls.Add(this.btnShowMajorChart);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.chartGender);
+            this.Controls.Add(this.btnShowGenderChart);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtNameSearch);
+            this.Controls.Add(this.btnSearchByName);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -324,6 +428,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGender)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,5 +460,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnSearchByName;
+        private System.Windows.Forms.TextBox txtNameSearch;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnShowGenderChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGender;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnShowMajorChart;
     }
 }

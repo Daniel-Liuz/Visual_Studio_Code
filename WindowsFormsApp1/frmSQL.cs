@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SQL;
+using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Windows.Forms;
-using SQL;
 using System.Drawing;
-
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WindowsFormsApp1
 {
@@ -397,6 +398,146 @@ namespace WindowsFormsApp1
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearchByName_Click(object sender, EventArgs e)
+        {
+            // 1. 获取并清理用户输入的姓名
+            string nameToSearch = txtNameSearch.Text.Trim();
+
+            // 2. 检查输入是否为空
+            if (string.IsNullOrWhiteSpace(nameToSearch))
+            {
+                MessageBox.Show("请输入要查询的学生姓名！");
+                return;
+            }
+
+            // 3. 构建 SQL 查询语句
+            // 使用 LIKE 和 '%' 来进行模糊匹配，这样用户不必输入完整的姓名
+            string sql = string.Format("SELECT studentNo, studentName, Birthday, Gender, Major FROM tblTopStudents WHERE studentName LIKE '%{0}%'", nameToSearch);
+            DataSet ds = new DataSet();
+            msg = string.Empty;
+
+            try
+            {
+                // 4. 执行查询
+                sh.RunSQL(sql, ref ds);
+                DataTable dt = ds.Tables[0];
+
+                // 5. 将查询结果绑定到 DataGridView2
+                dataGridView2.DataSource = dt;
+                dataGridView2.Refresh();
+
+                // 6. 向用户反馈查询结果
+                if (dt.Rows.Count > 0)
+                {
+                    msg = string.Format("共找到 {0} 位匹配的学生。", dt.Rows.Count);
+                }
+                else
+                {
+                    msg = "未找到符合条件的学生。";
+                }
+                MessageBox.Show(msg);
+            }
+            catch (Exception ex)
+            {
+                msg = "按姓名查询失败：" + ex.Message;
+                MessageBox.Show(msg);
+            }
+            finally
+            {
+                sh.Close();
+            }
+        }
+
+        private void btnShowGenderChart_Click(object sender, EventArgs e)
+        {
+            int maleCount = 0;
+            int femaleCount = 0;
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (row.Cells["Gender"].Value != null)
+                {
+                    string genderValue = row.Cells["Gender"].Value.ToString();
+                    if (genderValue == "True")
+                    {
+                        maleCount++;
+                    }
+                    else if (genderValue == "False")
+                    {
+                        femaleCount++;
+                    }
+                }
+            }
+
+            // *** 关键步骤：每次都清空图表，为新数据做准备 ***
+            chartGender.Series.Clear();
+            chartGender.Titles.Clear();
+
+            chartGender.Titles.Add("学生性别分布统计");
+            Series genderSeries = chartGender.Series.Add("GenderSeries");
+            genderSeries.ChartType = SeriesChartType.Pie;
+
+            genderSeries.Points.AddXY("男", maleCount);
+            genderSeries.Points.AddXY("女", femaleCount);
+
+            // 美化选项
+            chartGender.ChartAreas[0].Area3DStyle.Enable3D = true;
+            genderSeries.Label = "#VALX (#PERCENT)";
+            genderSeries.LegendText = "#VALX";
+        }
+
+        private void btnShowMajorChart_Click(object sender, EventArgs e)
+        {
+            // 1. 使用一个字典来存储每个专业的名称和对应的学生人数
+            Dictionary<string, int> majorCounts = new Dictionary<string, int>();
+
+            // 2. 遍历 dataGridView2 中的所有行来统计专业人数
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (row.Cells["Major"].Value != null)
+                {
+                    string majorName = row.Cells["Major"].Value.ToString();
+
+                    if (majorCounts.ContainsKey(majorName))
+                    {
+                        majorCounts[majorName]++;
+                    }
+                    else
+                    {
+                        majorCounts.Add(majorName, 1);
+                    }
+                }
+            }
+
+            // 4. 清空同一个图表控件，为新数据做准备
+            chartGender.Series.Clear();
+            chartGender.Titles.Clear();
+
+            // 5. 配置图表
+            chartGender.Titles.Add("学生专业分布统计");
+            Series majorSeries = chartGender.Series.Add("MajorSeries");
+            majorSeries.ChartType = SeriesChartType.Pie; // 同样使用饼图
+
+            // 6. 将字典中统计好的数据点添加到图表中
+            foreach (KeyValuePair<string, int> entry in majorCounts)
+            {
+                majorSeries.Points.AddXY(entry.Key, entry.Value);
+            }
+
+            // 7. 美化图表
+            chartGender.ChartAreas[0].Area3DStyle.Enable3D = true;
+
+            // ======================= 修改点在这里 =======================
+            //
+            // 通过注释掉下面这行代码，来移除饼图切片上的文字标签
+            // majorSeries.Label = "#VALX (#PERCENT)"; 
+            //
+            // ======================= 修改完成 =======================
+
+            // 我们保留这一行，它负责在图表旁边的图例中显示专业名称
+            majorSeries.LegendText = "#VALX";
         }
     }
 }
