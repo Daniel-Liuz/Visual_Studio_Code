@@ -52,3 +52,4 @@ E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\BiliCommentAnalysis.Form1.r
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Data.SqlClient.dll
 E:\Visual Studio programs\WindowsFormsApp1\bin\Debug\System.Data.SqlClient.xml
 E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmSQL.resources
+E:\Visual Studio programs\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.frmLogin.resources
