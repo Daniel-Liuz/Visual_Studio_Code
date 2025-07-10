@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -567,6 +569,93 @@ namespace WindowsFormsApp1
 
             // 我们保留这一行，它负责在图表旁边的图例中显示专业名称
             majorSeries.LegendText = "#VALX";
+        }
+        private string HashPassword(string plainText)
+        {
+            // 检查输入是否为空
+            if (string.IsNullOrEmpty(plainText))
+            {
+                return string.Empty;
+            }
+
+            // 创建 SHA256 实例
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // 将输入的字符串转换为字节数组并计算哈希值
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(plainText));
+
+                // 创建一个 StringBuilder 来收集字节并格式化为十六进制字符串
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2")); // "x2" 表示格式化为两位小写的十六进制数
+                }
+                return builder.ToString();
+            }
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            // 1. 获取输入
+            string studentNoToUpdate = txtStudentNo.Text.Trim();
+            string newPassword = txtNewPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+
+            // 2. 进行输入验证
+            if (string.IsNullOrWhiteSpace(studentNoToUpdate))
+            {
+                MessageBox.Show("请先通过查询或在表格中点击来选择一个学生！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                MessageBox.Show("新密码不能为空！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                MessageBox.Show("两次输入的密码不一致，请重新输入！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // 清空密码框，让用户重新输入
+                txtNewPassword.Clear();
+                txtConfirmPassword.Clear();
+                txtNewPassword.Focus(); // 将光标定位到新密码框
+                return;
+            }
+
+            try
+            {
+                // 3. 对新密码进行哈希加密
+                string hashedPassword = HashPassword(newPassword);
+
+                // 4. 构建并执行 SQL 更新语句 (注意SQL注入风险)
+                // 警告：string.Format 容易受到SQL注入攻击。在生产环境中，请务必使用参数化查询。
+                string sql = string.Format("UPDATE tblTopStudents SET pwd = '{0}' WHERE studentNo = '{1}'", hashedPassword, studentNoToUpdate);
+
+                int rowsAffected = sh.RunSQL(sql);
+
+                // 5. 反馈结果
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("密码修改成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // 成功后清空密码框
+                    txtNewPassword.Clear();
+                    txtConfirmPassword.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("密码修改失败，未更新任何记录。请确认学号是否正确。", "失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("修改密码时发生错误：" + ex.Message, "数据库错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sh.Close();
+            }
         }
     }
 }
