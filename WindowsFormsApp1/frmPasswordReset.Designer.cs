@@ -34,11 +34,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.gbSecurityQuestion = new System.Windows.Forms.GroupBox();
+            this.lblQuestion1 = new System.Windows.Forms.Label();
             this.txtAnswer1 = new System.Windows.Forms.TextBox();
+            this.btnVerifyAnswers = new System.Windows.Forms.Button();
             this.lblQuestion2 = new System.Windows.Forms.Label();
             this.txtAnswer2 = new System.Windows.Forms.TextBox();
-            this.btnVerifyAnswers = new System.Windows.Forms.Button();
-            this.lblQuestion1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.gbSecurityQuestion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("黑体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Location = new System.Drawing.Point(13, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(271, 33);
             this.label1.TabIndex = 0;
@@ -55,7 +56,7 @@
             // txtResetStudentNo
             // 
             this.txtResetStudentNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtResetStudentNo.Location = new System.Drawing.Point(324, 19);
+            this.txtResetStudentNo.Location = new System.Drawing.Point(328, 122);
             this.txtResetStudentNo.Name = "txtResetStudentNo";
             this.txtResetStudentNo.Size = new System.Drawing.Size(241, 42);
             this.txtResetStudentNo.TabIndex = 1;
@@ -63,9 +64,9 @@
             // btnSendResetEmail
             // 
             this.btnSendResetEmail.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSendResetEmail.Location = new System.Drawing.Point(558, 101);
+            this.btnSendResetEmail.Location = new System.Drawing.Point(328, 198);
             this.btnSendResetEmail.Name = "btnSendResetEmail";
-            this.btnSendResetEmail.Size = new System.Drawing.Size(195, 41);
+            this.btnSendResetEmail.Size = new System.Drawing.Size(248, 41);
             this.btnSendResetEmail.TabIndex = 2;
             this.btnSendResetEmail.Text = "发送重置邮件";
             this.btnSendResetEmail.UseVisualStyleBackColor = true;
@@ -75,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("黑体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(13, 101);
+            this.label2.Location = new System.Drawing.Point(13, 198);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(255, 33);
             this.label2.TabIndex = 4;
@@ -85,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("黑体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(13, 177);
+            this.label3.Location = new System.Drawing.Point(13, 271);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(383, 33);
             this.label3.TabIndex = 5;
@@ -98,12 +99,22 @@
             this.gbSecurityQuestion.Controls.Add(this.btnVerifyAnswers);
             this.gbSecurityQuestion.Controls.Add(this.lblQuestion2);
             this.gbSecurityQuestion.Controls.Add(this.txtAnswer2);
-            this.gbSecurityQuestion.Location = new System.Drawing.Point(31, 241);
+            this.gbSecurityQuestion.Location = new System.Drawing.Point(33, 352);
             this.gbSecurityQuestion.Name = "gbSecurityQuestion";
             this.gbSecurityQuestion.Size = new System.Drawing.Size(642, 411);
             this.gbSecurityQuestion.TabIndex = 6;
             this.gbSecurityQuestion.TabStop = false;
             this.gbSecurityQuestion.Text = "安全问题验证";
+            // 
+            // lblQuestion1
+            // 
+            this.lblQuestion1.AutoSize = true;
+            this.lblQuestion1.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblQuestion1.Location = new System.Drawing.Point(54, 81);
+            this.lblQuestion1.Name = "lblQuestion1";
+            this.lblQuestion1.Size = new System.Drawing.Size(362, 28);
+            this.lblQuestion1.TabIndex = 5;
+            this.lblQuestion1.Text = "问题1：您最喜欢什么颜色？";
             // 
             // txtAnswer1
             // 
@@ -112,6 +123,17 @@
             this.txtAnswer1.Name = "txtAnswer1";
             this.txtAnswer1.Size = new System.Drawing.Size(288, 39);
             this.txtAnswer1.TabIndex = 1;
+            // 
+            // btnVerifyAnswers
+            // 
+            this.btnVerifyAnswers.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnVerifyAnswers.Location = new System.Drawing.Point(58, 316);
+            this.btnVerifyAnswers.Name = "btnVerifyAnswers";
+            this.btnVerifyAnswers.Size = new System.Drawing.Size(288, 68);
+            this.btnVerifyAnswers.TabIndex = 4;
+            this.btnVerifyAnswers.Text = "验证答案";
+            this.btnVerifyAnswers.UseVisualStyleBackColor = true;
+            this.btnVerifyAnswers.Click += new System.EventHandler(this.btnVerifyAnswers_Click);
             // 
             // lblQuestion2
             // 
@@ -131,32 +153,22 @@
             this.txtAnswer2.Size = new System.Drawing.Size(288, 39);
             this.txtAnswer2.TabIndex = 3;
             // 
-            // btnVerifyAnswers
+            // label4
             // 
-            this.btnVerifyAnswers.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnVerifyAnswers.Location = new System.Drawing.Point(58, 316);
-            this.btnVerifyAnswers.Name = "btnVerifyAnswers";
-            this.btnVerifyAnswers.Size = new System.Drawing.Size(288, 68);
-            this.btnVerifyAnswers.TabIndex = 4;
-            this.btnVerifyAnswers.Text = "验证答案";
-            this.btnVerifyAnswers.UseVisualStyleBackColor = true;
-            this.btnVerifyAnswers.Click += new System.EventHandler(this.btnVerifyAnswers_Click);
-            // 
-            // lblQuestion1
-            // 
-            this.lblQuestion1.AutoSize = true;
-            this.lblQuestion1.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblQuestion1.Location = new System.Drawing.Point(54, 81);
-            this.lblQuestion1.Name = "lblQuestion1";
-            this.lblQuestion1.Size = new System.Drawing.Size(362, 28);
-            this.lblQuestion1.TabIndex = 5;
-            this.lblQuestion1.Text = "问题1：您最喜欢什么颜色？";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("黑体", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(404, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(283, 44);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "密码重置系统";
             // 
             // frmPasswordReset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 993);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.gbSecurityQuestion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -185,5 +197,6 @@
         private System.Windows.Forms.Button btnVerifyAnswers;
         private System.Windows.Forms.Label lblQuestion2;
         private System.Windows.Forms.TextBox txtAnswer2;
+        private System.Windows.Forms.Label label4;
     }
 }

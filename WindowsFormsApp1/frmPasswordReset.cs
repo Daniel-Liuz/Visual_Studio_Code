@@ -77,8 +77,8 @@ namespace WindowsFormsApp1
         // 邮件发送方法 (代码保持不变)
         private void SendEmail(string recipientEmail, string password)
         {
-            string fromEmail = "1195773178@qq.com";
-            string fromPassword = "jidwtfljqebkicej"; // 这是邮箱的授权码，不是登录密码
+            string fromEmail = "xxx";//请替换为你的邮箱地址
+            string fromPassword = "xxx"; // 这是邮箱的授权码，不是登录密码
             string smtpHost = "smtp.qq.com";
             int smtpPort = 587;
 
